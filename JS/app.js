@@ -2,7 +2,7 @@
 IUPS = "https://prod-33.northeurope.logic.azure.com:443/workflows/3f681a82021e4f67804a62a54c16f765/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=L-M5SgrbkIEuxREnHctua9MxznXUHGRW1TXwiHInrj8";
 RAI = "https://prod-44.northeurope.logic.azure.com:443/workflows/2fa2c176aaee460d9900c4b5fbeeb5c7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VmmFbvXRl0m-E6rCOSh1IEBLcR7BPAYdUTJfiqty1f0";
 
-BLOB_ACCOUNT = "https:// blobstoragecom682af.blob.core.windows.net";
+BLOB_ACCOUNT = "https://blobstoragecom682af.blob.core.windows.net";
 
 //Handlers for button clicks
 $(document).ready(function() {
