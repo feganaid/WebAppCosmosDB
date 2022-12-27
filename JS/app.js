@@ -65,7 +65,7 @@ var items = [];
 //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
 $.each( data, function( key, val ) {
 items.push( "<hr />");
-items.push("<img src='"+BLOB_ACCOUNT + val["filePath"] +"' width='400'/> <br />")
+items.push("<img src='"+BLOB_ACCOUNT + val["filepath"] +"' width='400'/> <br />")
 items.push( "File : " + val["fileName"] + "<br />");
 items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
 items.push( "<hr />");
