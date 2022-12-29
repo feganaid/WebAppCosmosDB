@@ -69,10 +69,10 @@ var items = [];
 //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
 $.each( data, function( key, val ) {
 items.push( "<hr />");
-items.push("<video width='500' height= '400' controls>")
-items.push("<source src='" + BLOB_ACCOUNT + val["filePath"] +" /> <br />")
-items.push("</video>")
-items.push( "<br>")
+items.push("<video width='500' height= '400' controls>");
+items.push("<source src='" + BLOB_ACCOUNT + val["filePath"] +" /> <br />");
+items.push("</video>");
+items.push( "<br>");
 items.push( "Title : " + val["Title"] + "<br />");
 items.push( "Publisher : " + val["Publisher"] + "<br />");
 items.push( "Producer : " + val["Producer"] + "<br />");
