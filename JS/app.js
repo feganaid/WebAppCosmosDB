@@ -31,7 +31,11 @@ function submitNewAsset(){
 submitData = new FormData();
 
 //Get form variables and append them to the form data object
-submitData.append('FileName', $('#FileName').val());
+submitData.append('Title', $('#Title').val());
+submitData.append('Publisher', $('#Publisher').val());
+submitData.append('Producer', $('#Producer').val());
+submitData.append('Genre', $('#Genre').val());
+submitData.append('Age', $('#Age').val());
 submitData.append('userID', $('#userID').val());
 submitData.append('userName', $('#userName').val());
 submitData.append('File', $("#UpFile")[0].files[0]);
@@ -65,8 +69,15 @@ var items = [];
 //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
 $.each( data, function( key, val ) {
 items.push( "<hr />");
-items.push("<img src='"+BLOB_ACCOUNT + val["filepath"] +"' width='400'/> <br />")
-items.push( "File : " + val["fileName"] + "<br />");
+items.push("<video width='500' height= '400' controls>")
+items.push("<source src='" + BLOB_ACCOUNT + val["filePath"] +" /> <br />")
+items.push("</video>")
+items.push( "<br>")
+items.push( "Title : " + val["Title"] + "<br />");
+items.push( "Publisher : " + val["Publisher"] + "<br />");
+items.push( "Producer : " + val["Producer"] + "<br />");
+items.push( "Genre : " + val["Genre"] + "<br />");
+items.push( "Age : " + val["Age"] + "<br />");
 items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
 items.push( "<hr />");
 });
