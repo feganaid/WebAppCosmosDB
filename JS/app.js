@@ -1,7 +1,7 @@
 //The URIs of the REST endpoint
 IUPS = "https://prod-33.northeurope.logic.azure.com:443/workflows/3f681a82021e4f67804a62a54c16f765/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=L-M5SgrbkIEuxREnHctua9MxznXUHGRW1TXwiHInrj8";
 RAI = "https://prod-44.northeurope.logic.azure.com:443/workflows/2fa2c176aaee460d9900c4b5fbeeb5c7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VmmFbvXRl0m-E6rCOSh1IEBLcR7BPAYdUTJfiqty1f0";
-
+SEARCH = "https://prod-07.centralus.logic.azure.com:443/workflows/e00cf2c4a2d94c86bd9d38590ae0b4db/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k4f0U3ZJuZv58ObWc9FQtguYfUKeeodjzjLkpzkKDyM";
 BLOB_ACCOUNT = "https://blobstoragecom682af.blob.core.windows.net";
 
 //Handlers for button clicks
@@ -20,6 +20,14 @@ $(document).ready(function() {
 
     //Execute the submit new asset function
     submitNewAsset();
+    
+  }); 
+
+  //Handlet for get search results list
+  $("#subNewSearch").click(function(){
+
+    //Execute the submit new asset function
+    getSearch();
     
   }); 
 });
@@ -57,34 +65,67 @@ $.ajax({
 }
 
 //A function to get a list of all the assets and write them to the Div with the AssetList Div
-function getImages(){
+function getSearch(){
 
 //Replace the current HTML in that div with a loading message
-$('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
+$('#SearchResults').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
 
-$.getJSON(RAI, function( data ) {
+$.getJSON(SEARCH, function( data ) {
 //Create an array to hold all the retrieved assets
-var items = [];
+var items1 = [];
 
 //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
 $.each( data, function( key, val ) {
-items.push( "<hr />");
-items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='400' height='500' controls> </video> <br />");
-items.push( "Title : " + val["Title"] + "<br />");
-items.push( "Publisher : " + val["Publisher"] + "<br />");
-items.push( "Producer : " + val["Producer"] + "<br />");
-items.push( "Genre : " + val["Genre"] + "<br />");
-items.push( "Age : " + val["Age"] + "<br />");
-items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
-items.push( "<hr />");
+items1.push( "<hr />");
+items1.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='400' height='500' controls> </video> <br />");
+items1.push( "Title : " + val["Title"] + "<br />");
+items1.push( "Publisher : " + val["Publisher"] + "<br />");
+items1.push( "Producer : " + val["Producer"] + "<br />");
+items1.push( "Genre : " + val["Genre"] + "<br />");
+items1.push( "Age : " + val["Age"] + "<br />");
+items1.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
+items1.push( "<hr />");
 });
 //Clear the assetlist div 
-$('#ImageList').empty();
+$('#SearchResults').empty();
 //Append the contents of the items array to the ImageList Div
 $( "<ul/>", {
 "class": "my-new-list",
 html: items.join( "" )
-}).appendTo( "#ImageList" );
+}).appendTo( "#SearchResults" );
 });
 
 }
+
+//A function to get a list of all the assets and write them to the Div with the AssetList Div
+function getImages(){
+
+  //Replace the current HTML in that div with a loading message
+  $('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
+  
+  $.getJSON(RAI, function( data ) {
+  //Create an array to hold all the retrieved assets
+  var items = [];
+  
+  //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
+  $.each( data, function( key, val ) {
+  items.push( "<hr />");
+  items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='400' height='500' controls> </video> <br />");
+  items.push( "Title : " + val["Title"] + "<br />");
+  items.push( "Publisher : " + val["Publisher"] + "<br />");
+  items.push( "Producer : " + val["Producer"] + "<br />");
+  items.push( "Genre : " + val["Genre"] + "<br />");
+  items.push( "Age : " + val["Age"] + "<br />");
+  items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
+  items.push( "<hr />");
+  });
+  //Clear the assetlist div 
+  $('#ImageList').empty();
+  //Append the contents of the items array to the ImageList Div
+  $( "<ul/>", {
+  "class": "my-new-list",
+  html: items.join( "" )
+  }).appendTo( "#ImageList" );
+  });
+  
+  }
