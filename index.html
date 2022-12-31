@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
 
-    <title>Video Share - Creator Mode</title>
+    </br></br><title>Video Share - Creator Mode</title>
 
       <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
       <script type="text/javascript" src="JS/bootstrap.js"></script>
@@ -15,6 +15,70 @@
   </head>
   
   <body>
+
+    <div  class="container">
+
+        <div class="row align-items-start">
+            <div class="col-2"  ></div>
+
+            <div class="col-8" style="text-align: center;">
+              <h3>Login / Logout</h3>
+              </p> Click the button below to log in or log out of VideoShare. </p>
+              <button id="login-button">Log in</button>
+              <button id="logout-button" style="display:none">Log out</button></br></br>
+            </div>
+
+            <div class="col-2"  ></div>
+        </div>
+
+    <script>
+      // Check if the user is already logged in
+      const isLoggedIn = () => {
+        return fetch("/.auth/me").then((response) => {
+          if (response.status === 200) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+      };
+
+      // Update the UI based on the user's login status
+      const updateUI = (isLoggedIn) => {
+        if (isLoggedIn) {
+          document.getElementById("login-button").style.display = "none";
+          document.getElementById("logout-button").style.display = "block";
+          document.getElementById("retImages").style.display = "block";
+        } else {
+          document.getElementById("login-button").style.display = "block";
+          document.getElementById("logout-button").style.display = "none";
+          document.getElementById("retImages").style.display = "none";
+        }
+      };
+
+      // Check the user's login status when the page loads
+      isLoggedIn().then((isLoggedIn) => {
+        updateUI(isLoggedIn);
+      });
+
+      // Handle login and logout requests
+      document.getElementById("login-button").addEventListener("click", () => {
+        fetch("/.auth/login/aad", {
+          method: "POST",
+        }).then(() => {
+          // Update the UI after successful login
+          updateUI(true);
+        });
+      });
+      document.getElementById("logout-button").addEventListener("click", () => {
+        fetch("/.auth/logout", {
+          method: "POST",
+        }).then(() => {
+          // Update the UI after successful logout
+          updateUI(false);
+        });
+      });
+    </script>
 
     <div  class="container">
 
@@ -91,12 +155,10 @@
 
             <div class="col-8" style="text-align: left;" >
               <div style="padding:5px;">
-                <button  id = "retImages" type="button" class="btn btn-primary">View Images</button>
+              </br><button  id = "retImages" type="button" class="btn btn-primary">View Videos</button></br></br>
               </div>
 
               <div id="ImageList">
-
-                <h4>Please click the view Images button if you wish to view images on the system.</h4>
 
               </div>
             </div>
