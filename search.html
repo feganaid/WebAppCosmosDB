@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" ng-app="Dashboard">
+  <head>
+    <meta charset="UTF-8">
+
+    <title>Video Share</title>
+
+      <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+      <script type="text/javascript" src="JS/bootstrap.js"></script>
+      <script type="text/javascript" src="JS/bootstrap.bundle.min.js"></script>
+      <script type="text/javascript" src="JS/jquery-3.6.0.min.js"></script>
+
+      <script type="text/javascript" src="JS/app.js"></script>
+
+  </head>
+  
+  <body>
+
+    <div  class="container">
+
+        <!--Header-->
+        <div class="row align-items-start">
+            <div class="col-2"  ></div>
+
+            <div class="col-8" style="text-align: center;">
+              <h3>VideoShare</h3>
+            </div>
+
+            <div class="col-2"  ></div>
+        </div>
+
+        <!--New Asset Box-->
+        <div class="row align-items-start">
+            <div class="col-2"  ></div>
+
+            <div class="col-8" style="text-align: left;" >
+              <p>Search</p>
+
+              <form style="font-size: 10pt;" id="newSearch">
+                <div class="mb-3">
+                  <input type="text" class="form-control" id="search"></br>
+                  <button  id = "retSearch" type="button" class="btn btn-primary">Search</button>
+                </div>
+                
+              </form>
+            
+            </div>
+
+              <div id="SearchList"></div>
+              
+            </div>
+
+            <div class="col-2"  ></div>
+        </div>
+
+    </div>
+  
+  </body>
+</html>
