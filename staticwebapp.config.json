@@ -1,9 +1,8 @@
 {
   "routes": [
     {
-      "route": "/*",
+      "route": "/index.html",
       "allowedRoles": ["authenticated", "Creator"]
-      "exclude": ["/upload.html"]
     },
     {
       "route": "/upload.html",
