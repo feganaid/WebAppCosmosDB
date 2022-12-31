@@ -92,26 +92,26 @@ function getSearch(){
 
   $.getJSON(SEARCH, function( data ) {
   //Create an array to hold all the retrieved assets
-  var items1 = [];
+  var items = [];
 
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
   $.each( data, function( key, val ) {
-  items1.push( "<hr />");
-  items1.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='400' height='500' controls> </video> <br />");
-  items1.push( "Title : " + val["Title"] + "<br />");
-  items1.push( "Publisher : " + val["Publisher"] + "<br />");
-  items1.push( "Producer : " + val["Producer"] + "<br />");
-  items1.push( "Genre : " + val["Genre"] + "<br />");
-  items1.push( "Age : " + val["Age"] + "<br />");
-  items1.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
-  items1.push( "<hr />");
+  items.push( "<hr />");
+  items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='400' height='500' controls> </video> <br />");
+  items.push( "Title : " + val["Title"] + "<br />");
+  items.push( "Publisher : " + val["Publisher"] + "<br />");
+  items.push( "Producer : " + val["Producer"] + "<br />");
+  items.push( "Genre : " + val["Genre"] + "<br />");
+  items.push( "Age : " + val["Age"] + "<br />");
+  items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
+  items.push( "<hr />");
   });
   //Clear the assetlist div 
   $('#SearchResults').empty();
   //Append the contents of the items array to the ImageList Div
   $( "<ul/>", {
   "class": "my-new-list",
-  html: items1.join( "" )
+  html: items.join( "" )
   }).appendTo( "#SearchResults" );
   });
 
