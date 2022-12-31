@@ -7,7 +7,7 @@
     {
       "route": "/upload.html",
       "allowedRoles": ["Creator"]
-    }
+    },
     {
       "route": "/search.html",
       "allowedRoles": ["authenticated", "Creator"]
