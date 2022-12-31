@@ -67,6 +67,26 @@ $.ajax({
 //A function to get a list of all the assets and write them to the Div with the AssetList Div
 function getSearch(){
 
+//Create a form data object
+searchData = new FormData();
+
+//Get form variables and append them to the form data object
+searchData.append('search', $('#search').val());
+
+//Post the form data to the endpoint, note the need to set the content type header
+$.ajax({
+  url: SEARCH,
+  data: searchData,
+  cache: false,
+  enctype: 'multipart/form-data',
+  contentType: false,
+  processData: false,
+  type: 'GET',
+  success: function(data){
+
+  }
+}); 
+ 
 //Replace the current HTML in that div with a loading message
 $('#SearchResults').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
 
