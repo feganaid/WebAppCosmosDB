@@ -88,7 +88,7 @@ function getSearch(){
   }); 
  
   //Replace the current HTML in that div with a loading message
-  $('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
+  $('#SearchResults').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
 
   $.getJSON(SEARCH, function( data ) {
   //Create an array to hold all the retrieved assets
@@ -107,12 +107,12 @@ function getSearch(){
   items.push( "<hr />");
   });
   //Clear the assetlist div 
-  $('#ImageList').empty();
+  $('#SearchResults').empty();
   //Append the contents of the items array to the ImageList Div
   $( "<ul/>", {
   "class": "my-new-list",
   html: items.join( "" )
-  }).appendTo( "#ImageList" );
+  }).appendTo( "#SearchResults" );
   });
 
   }
