@@ -3,17 +3,17 @@
     {
       "route": "/*",
       "allowedRoles": ["authenticated"]
-    }
+    },
+    {
+      "route": "/upload.html",
+      "allowedRoles": ["Creator"]
+    } 
   ],
   "responseOverrides": {
     "401": {
       "statusCode": 302,
       "redirect": "/.auth/login/github"
     }
-    {
-      "route": "/upload.html",
-      "allowedRoles": ["Creator"]
-    } 
   }
 }
 
