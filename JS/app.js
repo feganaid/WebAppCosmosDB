@@ -67,7 +67,7 @@ $.ajax({
   enctype: 'multipart/form-data',
   contentType: false,
   processData: false,
-  type: 'GET',
+  type: 'POST',
   success: function(data){
 
   }
