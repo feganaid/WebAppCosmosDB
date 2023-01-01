@@ -81,7 +81,8 @@ function getSearch(){
     enctype: 'multipart/form-data',
     contentType: false,
     processData: false,
-    type: 'POST'
+    type: 'POST',
+    success: data
   }); 
  
   //Replace the current HTML in that div with a loading message
