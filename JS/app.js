@@ -3,6 +3,7 @@ IUPS = "https://prod-33.northeurope.logic.azure.com:443/workflows/3f681a82021e4f
 RAI = "https://prod-44.northeurope.logic.azure.com:443/workflows/2fa2c176aaee460d9900c4b5fbeeb5c7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VmmFbvXRl0m-E6rCOSh1IEBLcR7BPAYdUTJfiqty1f0";
 SEARCH = "https://prod-07.centralus.logic.azure.com:443/workflows/e00cf2c4a2d94c86bd9d38590ae0b4db/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k4f0U3ZJuZv58ObWc9FQtguYfUKeeodjzjLkpzkKDyM";
 ADDCOMMENT = "https://prod-02.centralus.logic.azure.com:443/workflows/eced7439947a464fb8b3568eb5718636/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=TnRNifbEBFG-ttZoCGGFaG7nl4CRv20IR85rVTBKKZE";
+GETCOMMENTS = "https://prod-04.centralus.logic.azure.com:443/workflows/75e49a5c613e423eb9246f9fc54dae23/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=wkYKJE4ITc4I7F56hYMlnRWBGtdsjPq78Pyh6togv2s";
 BLOB_ACCOUNT = "https://blobstoragecom682af.blob.core.windows.net";
 
 //Handlers for button clicks
@@ -180,7 +181,33 @@ function getImages(){
   items.push( "Age : " + val["Age"] + "<br />");
   items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
   items.push( "<hr />");
+
+  //Create a form data object
+  searchData = new FormData();
+
+  searchData.append('Title', val("Title"));
+  
+  $.ajax({
+    url: GETCOMMENTS,
+    data: searchData,
+    cache: false,
+    enctype: 'multipart/form-data',
+    contentType: false,
+    processData: false,
+    type: 'POST',
+    success: function(data){
+
+  //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
+    $.each( data, function( key, val ) {
+  
+    items.push( "Rating : "+ val("Rating") +" / 5 ; Comment : " + val("Comment"));
+    
+    });
+    }
   });
+
+  });
+  
   //Clear the assetlist div 
   $('#ImageList').empty();
   //Append the contents of the items array to the ImageList Div
@@ -189,5 +216,4 @@ function getImages(){
   html: items.join( "" )
   }).appendTo( "#ImageList" );
   });
-  
-  }
+}
