@@ -36,7 +36,7 @@ $(document).ready(function() {
   $("#addComment").click(function(){
 
     //Execute the submit new asset function
-    subNewComment();
+    submitNewComment();
     
   });
  
