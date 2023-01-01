@@ -66,7 +66,7 @@ $.ajax({
 
 //A function to get a list of all the assets and write them to the Div with the AssetList Div
 function getSearch(){
-/*
+
   //Create a form data object
   searchData = new FormData();
 
@@ -86,7 +86,7 @@ function getSearch(){
 
     }
   }); 
- */
+ 
   //Replace the current HTML in that div with a loading message
   $('#SearchResults').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
 
