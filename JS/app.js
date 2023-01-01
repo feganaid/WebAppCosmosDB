@@ -188,6 +188,8 @@ function getImages(){
 
   searchData.append('Title', val["Title"]);
   
+  var comments = []; 
+   
   $.ajax({
     url: GETCOMMENTS,
     data: searchData,
@@ -200,13 +202,15 @@ function getImages(){
 
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
     $.each( data, function( key, val ) {
-  
-    items.push( "Rating : "+ val["Rating"] +" / 5 ; Comment : " + val["Comment"]);
+    
+    comments.push( "Rating : "+ val["Rating"] +" / 5 ; Comment : " + val["Comment"]);
     
     });
     }
   });
 
+  items.concat(comments);
+   
   });
   
   //Clear the assetlist div 
