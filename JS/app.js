@@ -2,6 +2,7 @@
 IUPS = "https://prod-33.northeurope.logic.azure.com:443/workflows/3f681a82021e4f67804a62a54c16f765/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=L-M5SgrbkIEuxREnHctua9MxznXUHGRW1TXwiHInrj8";
 RAI = "https://prod-44.northeurope.logic.azure.com:443/workflows/2fa2c176aaee460d9900c4b5fbeeb5c7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VmmFbvXRl0m-E6rCOSh1IEBLcR7BPAYdUTJfiqty1f0";
 SEARCH = "https://prod-07.centralus.logic.azure.com:443/workflows/e00cf2c4a2d94c86bd9d38590ae0b4db/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k4f0U3ZJuZv58ObWc9FQtguYfUKeeodjzjLkpzkKDyM";
+ADDCOMMENT = "https://prod-02.centralus.logic.azure.com:443/workflows/eced7439947a464fb8b3568eb5718636/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=TnRNifbEBFG-ttZoCGGFaG7nl4CRv20IR85rVTBKKZE";
 BLOB_ACCOUNT = "https://blobstoragecom682af.blob.core.windows.net";
 
 //Handlers for button clicks
@@ -23,13 +24,22 @@ $(document).ready(function() {
     
   }); 
 
-  //Handlet for get search results list
+  //Handler for get search results list
   $("#subNewSearch").click(function(){
 
     //Execute the submit new asset function
     getSearch();
     
-  }); 
+  });
+  
+  //Handler for get search results list
+  $("#addComment").click(function(){
+
+    //Execute the submit new asset function
+    subNewComment();
+    
+  });
+ 
 });
 
 //A function to submit a new asset to the REST endpoint 
@@ -51,6 +61,34 @@ submitData.append('File', $("#UpFile")[0].files[0]);
 //Post the form data to the endpoint, note the need to set the content type header
 $.ajax({
   url: IUPS,
+  data: submitData,
+  cache: false,
+  enctype: 'multipart/form-data',
+  contentType: false,
+  processData: false,
+  type: 'GET',
+  success: function(data){
+
+  }
+});
+
+}
+
+
+//A function to submit a new asset to the REST endpoint 
+function submitNewComment(){
+  
+//Create a form data object
+submitData = new FormData();
+
+//Get form variables and append them to the form data object
+submitData.append('Title', $('#Title').val());
+submitData.append('Comment', $('#Comment').val());
+submitData.append('Rating', $('#Rating').val());
+
+//Post the form data to the endpoint, note the need to set the content type header
+$.ajax({
+  url: ADDCOMMENT,
   data: submitData,
   cache: false,
   enctype: 'multipart/form-data',
