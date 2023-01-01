@@ -165,12 +165,12 @@ function getImages(){
 
   //Replace the current HTML in that div with a loading message
   $('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
-  
-  //Create an array to hold all the retrieved assets
-  var items = []; 
  
   $.getJSON(RAI, function( data ) {
   
+  //Create an array to hold all the retrieved assets
+  var items = []; 
+    
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
   $.each( data, function( key, val ) {
   items.push( "<hr />");
@@ -188,7 +188,7 @@ function getImages(){
 
   searchData.append('Title', val["Title"]);
   
-  var comments = []; 
+  
    
   $.ajax({
     url: GETCOMMENTS,
@@ -203,13 +203,15 @@ function getImages(){
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
     $.each( data, function( key, val ) {
     
-    comments.push( "Rating : "+ val["Rating"] +" / 5 ; Comment : " + val["Comment"]);
+      var comments = []; 
+      
+      comments.push( "Rating : "+ val["Rating"] +" / 5 ; Comment : " + val["Comment"]);
     
     });
     }
   });
 
-  items.concat(comments);
+  items = items.concat(comments);
    
   });
   
