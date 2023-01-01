@@ -82,9 +82,9 @@ function submitNewComment(){
 submitData = new FormData();
 
 //Get form variables and append them to the form data object
-submitData.append('Title', $('#Title').val());
-submitData.append('Comment', $('#Comment').val());
-submitData.append('Rating', $('#Rating').val());
+submitData.append('Title', $('#title').val());
+submitData.append('Comment', $('#comment').val());
+submitData.append('Rating', $('#rating').val());
 
 //Post the form data to the endpoint, note the need to set the content type header
 $.ajax({
