@@ -68,54 +68,59 @@ $.ajax({
 function getSearch(){
 
   //Create a form data object
-//  searchData = new FormData();
+  searchData = new FormData();
 
   //Get form variables and append them to the form data object
-//  searchData.append('search', $('#search').val());
+  searchData.append('search', $('#search').val());
 
   //Post the form data to the endpoint, note the need to set the content type header
-//  $.ajax({
-//    url: SEARCH,
-//    data: searchData,
-//    cache: false,
-//    enctype: 'multipart/form-data',
-//    contentType: false,
-//    processData: false,
-//    type: 'POST',
-//    success: function(data){
+  $.ajax({
+    url: SEARCH,
+    data: searchData,
+    cache: false,
+    enctype: 'multipart/form-data',
+    contentType: false,
+    processData: false,
+    type: 'POST',
+    success: function(data){
 
-//    }
-//  }); 
+    }
+  }); 
  
   //Replace the current HTML in that div with a loading message
   $('#SearchResults').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
 
   $.getJSON(SEARCH, function( data ) {
-  //Create an array to hold all the retrieved assets
-  var items = [];
+  
+   //Create an array to hold all the retrieved assets
+   var items = [];
 
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
-  $.each( data, function( key, val ) {
-  items.push( "<hr />");
-  items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='400' height='500' controls> </video> <br />");
-  items.push( "Title : " + val["Title"] + "<br />");
-  items.push( "Publisher : " + val["Publisher"] + "<br />");
-  items.push( "Producer : " + val["Producer"] + "<br />");
-  items.push( "Genre : " + val["Genre"] + "<br />");
-  items.push( "Age : " + val["Age"] + "<br />");
-  items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
-  items.push( "<hr />");
+   $.each( data, function( key, val ) {
+  
+    items.push( "<hr />");
+    items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='400' height='500' controls> </video> <br />");
+    items.push( "Title : " + val["Title"] + "<br />");
+    items.push( "Publisher : " + val["Publisher"] + "<br />");
+    items.push( "Producer : " + val["Producer"] + "<br />");
+    items.push( "Genre : " + val["Genre"] + "<br />");
+    items.push( "Age : " + val["Age"] + "<br />");
+    items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
+    items.push( "<hr />");
+  
   });
+  
   //Clear the assetlist div 
-  $('#SearchResults').empty();
+   $('#SearchResults').empty();
+  
   //Append the contents of the items array to the ImageList Div
-  $( "<ul/>", {
-  "class": "my-new-list",
-  html: items.join( "" )
-  }).appendTo( "#SearchResults" );
+   $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+   }).appendTo( "#SearchResults" );
   });
 
-  }
+ }
 
 //A function to get a list of all the assets and write them to the Div with the AssetList Div
 function getImages(){
