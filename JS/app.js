@@ -201,17 +201,13 @@ function getImages(){
     success: function(data){
 
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
-    $.each( data, function( key, val ) {
-    
-      var comments = []; 
+    $.each( data, function( key, val ) { 
       
-      comments.push( "Rating : "+ val["Rating"] +" / 5 ; Comment : " + val["Comment"]);
+      items.push( "Rating : "+ val["Rating"] +" / 5 ; Comment : " + val["Comment"]);
     
     });
     }
   });
-
-  items = items.concat(comments);
    
   });
   
