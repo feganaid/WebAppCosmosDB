@@ -166,9 +166,10 @@ function getImages(){
   //Replace the current HTML in that div with a loading message
   $('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
   
-  $.getJSON(RAI, function( data ) {
   //Create an array to hold all the retrieved assets
-  var items = [];
+  var items = []; 
+ 
+  $.getJSON(RAI, function( data ) {
   
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
   $.each( data, function( key, val ) {
