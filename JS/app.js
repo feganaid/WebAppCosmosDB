@@ -72,7 +72,10 @@ function getSearch(){
 
   //Get form variables and append them to the form data object
   searchData.append('search', $('#search').val());
-
+ 
+   //Replace the current HTML in that div with a loading message
+  $('#SearchResults').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>'); 
+ 
   //Post the form data to the endpoint, note the need to set the content type header
   $.ajax({
     url: SEARCH,
@@ -82,15 +85,8 @@ function getSearch(){
     contentType: false,
     processData: false,
     type: 'POST',
-    success: data
-  }); 
- 
-  //Replace the current HTML in that div with a loading message
-  $('#SearchResults').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
-/*
-  $.getJSON(RAI, function( data ) {
-*/  
-   //Create an array to hold all the retrieved assets
+    success: function(data){
+      //Create an array to hold all the retrieved assets
    var items = [];
 
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
@@ -117,6 +113,15 @@ function getSearch(){
     html: items.join( "" )
    }).appendTo( "#SearchResults" );
   });
+   
+    }
+  }); 
+ 
+
+/*
+  $.getJSON(RAI, function( data ) {
+*/  
+   
 
 }
 
