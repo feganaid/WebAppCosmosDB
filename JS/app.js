@@ -90,7 +90,7 @@ function getSearch(){
   //Replace the current HTML in that div with a loading message
   $('#SearchResults').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
 
-  $.getJSON(SEARCH, function( data ) {
+  $.getJSON(RAI, function( data ) {
   
    //Create an array to hold all the retrieved assets
    var items = [];
