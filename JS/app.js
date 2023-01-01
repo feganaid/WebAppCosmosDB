@@ -90,7 +90,7 @@ function getSearch(){
    var items = [];
 
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
-   $.each( data, function( key, val ) {
+    $.each( data, function( key, val ) {
   
     items.push( "<hr />");
     items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='400' height='500' controls> </video> <br />");
@@ -101,29 +101,25 @@ function getSearch(){
     items.push( "Age : " + val["Age"] + "<br />");
     items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
     items.push( "<hr />");
-  
-  });
+    });
   
   //Clear the assetlist div 
    $('#SearchResults').empty();
   
   //Append the contents of the items array to the ImageList Div
    $( "<ul/>", {
-    "class": "my-new-list",
-    html: items.join( "" )
+   "class": "my-new-list",
+   html: items.join( "" )
    }).appendTo( "#SearchResults" );
+  }
   });
-   
-    }
-  }); 
+} 
  
 
 /*
   $.getJSON(RAI, function( data ) {
 */  
    
-
-}
 
 //A function to get a list of all the assets and write them to the Div with the AssetList Div
 function getImages(){
