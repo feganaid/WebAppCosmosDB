@@ -120,7 +120,7 @@ function getSearch(){
    }).appendTo( "#SearchResults" );
   });
 
- }
+}
 
 //A function to get a list of all the assets and write them to the Div with the AssetList Div
 function getImages(){
