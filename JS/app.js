@@ -38,7 +38,7 @@ $(document).ready(function() {
 
     //Execute the submit new asset function
     submitNewComment();
-    modComments();
+    //modComments();
     
   });
  
@@ -83,9 +83,30 @@ function submitNewComment(){
 //Create a form data object
 submitData = new FormData();
 
+$.ajax({
+            url: "https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?autocorrect=True",
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Content-Type","text/plain");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","93f475c23fbd456b9c440def70aa1a6a");
+            },
+            type: 'POST',
+            // Request body
+            data: $('#comment').val(),
+            success: function(data) {
+            submitData.append('Comment, $('#auto_corrected_text').val()); 
+            {,
+        })
+        .done(function(data) {
+            alert("success");
+        })
+        .fail(function() {
+            alert("error");
+        });
+ 
 //Get form variables and append them to the form data object
 submitData.append('Title', $('#title').val());
-submitData.append('Comment', $('#comment').val());
+//submitData.append('Comment', $('#comment').val());
 submitData.append('Rating', parseInt($('#rating').val()));
 
 //Post the form data to the endpoint, note the need to set the content type header
