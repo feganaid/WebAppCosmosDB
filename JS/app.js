@@ -83,8 +83,12 @@ function submitNewComment(){
 //Create a form data object
 submitData = new FormData();
 
+var params = {
+ "autocorrect": "True",
+};
+ 
 $.ajax({
-            url: "https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?autocorrect=True",
+            url: "https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?" + $.param(params),
             beforeSend: function(xhrObj){
                 // Request headers
                 xhrObj.setRequestHeader("Content-Type","text/plain");
@@ -95,7 +99,7 @@ $.ajax({
             data: $('#comment').val(),
             success: function(data) {
                 $.each( data, function( key, val ) {    
-                submitData.append('Comments', $('#auto_corrected_text').val()); 
+                submitData.append('Comments', val["auto_corrected_text"]); 
                 });
             },    
         })
