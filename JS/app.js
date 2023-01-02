@@ -94,8 +94,10 @@ $.ajax({
             // Request body
             data: $('#comment').val(),
             success: function(data) {
-            submitData.append('Comment, $('#auto_corrected_text').val()); 
-            {,
+                $.each( data, function( key, val ) {    
+                submitData.append('Comment', $('#auto_corrected_text').val()); 
+                });
+            },    
         })
         .done(function(data) {
             alert("success");
