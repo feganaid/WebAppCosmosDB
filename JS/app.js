@@ -198,15 +198,17 @@ function getImages(){
     processData: false,
     type: 'POST',
     success: function(data){
-
+    var comments = [];
      //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
     $.each( data, function( key, val ) { 
-    items.push( "Rating : "+ val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />");
+    comments.push( "Rating : "+ val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />");
     
     });
     }
   });
   
+  items.push(comments); 
+   
   });
   
   //Clear the assetlist div 
