@@ -95,7 +95,7 @@ $.ajax({
             data: $('#comment').val(),
             success: function(data) {
                 $.each( data, function( key, val ) {    
-                submitData.append('Comment', val["auto_corrected_text"]); 
+                submitData.append('Comments', $('#auto_corrected_text').val()); 
                 });
             },    
         })
