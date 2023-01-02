@@ -82,7 +82,7 @@ function submitNewComment(){
   
 //Create a form data object
 submitData = new FormData();
-
+/*
 var params = {
  "autocorrect": "True",
 };
@@ -109,10 +109,10 @@ $.ajax({
         .fail(function() {
             alert("error");
         });
- 
+*/ 
 //Get form variables and append them to the form data object
 submitData.append('Title', $('#title').val());
-//submitData.append('Comment', $('#comment').val());
+submitData.append('Comment', $('#comment').val());
 submitData.append('Rating', parseInt($('#rating').val()));
 
 //Post the form data to the endpoint, note the need to set the content type header
