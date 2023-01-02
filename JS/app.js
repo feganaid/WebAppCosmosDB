@@ -225,11 +225,6 @@ function getImages(){
 
 function modComments() {
  
-//Create a form data object
-  newComment = new FormData();
-
-  newComment.append('Comment', $('#comment').val());
- 
   $.ajax({
             url: "https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen",
             beforeSend: function(xhrObj){
@@ -239,7 +234,7 @@ function modComments() {
             },
             type: 'POST',
             // Request body
-            data: newComment,
+            data: $('#comment').val(),
         })
         .done(function(data) {
             alert("success");
