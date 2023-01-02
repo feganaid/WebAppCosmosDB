@@ -235,7 +235,7 @@ function modComments() {
             beforeSend: function(xhrObj){
                 // Request headers
                 xhrObj.setRequestHeader("Content-Type","text/plain");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{93f475c23fbd456b9c440def70aa1a6a}");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","93f475c23fbd456b9c440def70aa1a6a");
             },
             type: 'POST',
             // Request body
