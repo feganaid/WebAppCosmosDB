@@ -200,8 +200,7 @@ function getImages(){
 
      //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
      $.each( data, function( key, val ) { 
-     
-       items.push( "Rating : "+ val["Rating"] +" / 5 ; Comment : " + val["Comment"]);
+     items.push( "Rating : "+ val["Rating"] +" / 5 ; Comment : " + val["Comment"]);
     
      });
     }
