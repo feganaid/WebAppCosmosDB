@@ -231,7 +231,7 @@ function modComments() {
   newComment.append('Comment', $('#comment').val());
  
   $.ajax({
-            url: "https://commentmod.cognitiveservices.azure.com/contentmoderator/moderate/v1.0/ProcessText/Screen",
+            url: "https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen",
             beforeSend: function(xhrObj){
                 // Request headers
                 xhrObj.setRequestHeader("Content-Type","text/plain");
