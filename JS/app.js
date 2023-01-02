@@ -207,7 +207,7 @@ function getImages(){
     }
   });
   
-  items.push(comments); 
+  items = items.concat(comments); 
    
   });
   
