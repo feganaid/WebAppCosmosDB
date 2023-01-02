@@ -182,7 +182,7 @@ function getImages(){
   items.push( "Age : " + val["Age"] + "<br />");
   items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
   items.push( "<hr />");
-  items.push( "Comments : " + "br />"); 
+  items.push( "Comments : " + "<br />"); 
 
   //Create a form data object
   searchData = new FormData();
@@ -200,10 +200,10 @@ function getImages(){
     success: function(data){
 
      //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
-     $.each( data, function( key, val ) { 
-     items.push( "Rating : "+ val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />");
+    $.each( data, function( key, val ) { 
+    items.push( "Rating : "+ val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />");
     
-     });
+    });
     }
   });
   
