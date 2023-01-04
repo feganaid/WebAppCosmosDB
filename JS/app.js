@@ -280,7 +280,7 @@ function getComments() {
   //Append the contents of the items array to the ImageList Div
   $( "<ul/>", {
   "class": "my-new-list",
-  html: items.join( "" )
+  html: comments.join( "" )
   }).appendTo( "#CommentList" );
  
 }
