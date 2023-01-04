@@ -227,20 +227,13 @@ function getImages(){
     type: 'POST',
     success: function(data){
     
-     addcomments()
+    addcomments()
      
     
     }
   });
   
   });
-    
-  function addcomments() {
-    $.each( data, function( key, val ) { 
-    items.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
-    }) 
-    
-  };
    
   });
   
@@ -254,6 +247,12 @@ function getImages(){
 
 }
 
+function addcomments() {
+    $.each( data, function( key, val ) { 
+    items.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
+    }) 
+    
+  };
 
 function modComments() {
  
