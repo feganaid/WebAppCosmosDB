@@ -270,19 +270,19 @@ function getComments() {
     success: function(data){
     
     $.each( data, function( key, val ) { 
-    comments.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
-    }); 
-    }
-  }),
-   
-  //Clear the assetlist div 
-  $('#CommentList').empty();
-  //Append the contents of the items array to the ImageList Div
-  $( "<ul/>", {
-  "class": "my-new-list",
-  html: comments.join( "" )
-  }).appendTo( "#CommentList" );
- 
+    
+     comments.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
+     });
+     
+     //Clear the assetlist div 
+     $('#CommentList').empty();
+     //Append the contents of the items array to the ImageList Div
+     $( "<ul/>", {
+     "class": "my-new-list",
+     html: comments.join( "" )
+     }).appendTo( "#CommentList" );
+     }
+  });
 }
  
 function addcomments() {
