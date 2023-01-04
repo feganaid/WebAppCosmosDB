@@ -257,7 +257,7 @@ function getComments() {
   //Create a form data object
   searchData = new FormData();
 
-  searchData.append('Title', $('#Title').val());
+  searchData.append('Title', $('#search').val());
   
   $.ajax({
     url: GETCOMMENTS,
