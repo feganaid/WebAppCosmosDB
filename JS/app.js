@@ -226,16 +226,21 @@ function getImages(){
     processData: false,
     type: 'POST',
     success: function(data){
-    var comments = [];
-     //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
-    $.each( data, function( key, val ) { 
-    comments.push( "Rating : "+ val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />");
     
-    });
+     addcomments()
+     
+    
     }
   });
   
-  items = items.concat(comments); 
+  });
+    
+  function addcomments() {
+    $.each( data, function( key, val ) { 
+    items.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
+    }) 
+    
+  };
    
   });
   
@@ -246,7 +251,7 @@ function getImages(){
   "class": "my-new-list",
   html: items.join( "" )
   }).appendTo( "#ImageList" );
-  });
+
 }
 
 
