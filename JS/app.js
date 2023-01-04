@@ -30,6 +30,7 @@ $(document).ready(function() {
 
     //Execute the submit new asset function
     getSearch();
+    getComments();
     
   });
   
@@ -247,6 +248,41 @@ function getImages(){
 
 }
 
+function getComments(){
+
+  var comments = []
+  
+  //Create a form data object
+  searchData = new FormData();
+
+  searchData.append('Title', val["Title"]);
+  
+  $.ajax({
+    url: GETCOMMENTS,
+    data: searchData,
+    cache: false,
+    enctype: 'multipart/form-data',
+    contentType: false,
+    processData: false,
+    type: 'POST',
+    success: function(data){
+    
+    $.each( data, function( key, val ) { 
+    comments.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
+    }) 
+    
+  };
+   
+  //Clear the assetlist div 
+  $('#ImageList').empty();
+  //Append the contents of the items array to the ImageList Div
+  $( "<ul/>", {
+  "class": "my-new-list",
+  html: items.join( "" )
+  }).appendTo( "#ImageList" );
+ 
+}
+ 
 function addcomments() {
     $.each( data, function( key, val ) { 
     items.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
