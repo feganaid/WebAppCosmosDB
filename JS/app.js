@@ -248,10 +248,12 @@ function getImages(){
 
 }
 
-function getComments(){
+function getComments() {
 
-  var comments = []
+  var comments = [];
   
+  $('#CommentList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
+
   //Create a form data object
   searchData = new FormData();
 
@@ -269,17 +271,17 @@ function getComments(){
     
     $.each( data, function( key, val ) { 
     comments.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
-    }) 
-    
-  };
+    }); 
+    }
+  }),
    
   //Clear the assetlist div 
-  $('#ImageList').empty();
+  $('#CommentList').empty();
   //Append the contents of the items array to the ImageList Div
   $( "<ul/>", {
   "class": "my-new-list",
   html: items.join( "" )
-  }).appendTo( "#ImageList" );
+  }).appendTo( "#CommentList" );
  
 }
  
