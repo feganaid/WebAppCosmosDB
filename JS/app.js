@@ -227,25 +227,20 @@ function getImages(){
     processData: false,
     type: 'POST',
     success: function(data){
-    
-    addcomments()
-     
-    
+      $.each( data, function( key, val ) {
+      items.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
+      });
+    //Clear the assetlist div 
+    $('#ImageList').empty();
+    //Append the contents of the items array to the ImageList Div
+    $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+    }).appendTo( "#ImageList" ); 
     }
   });
-  
   });
-   
   });
-  
-  //Clear the assetlist div 
-  $('#ImageList').empty();
-  //Append the contents of the items array to the ImageList Div
-  $( "<ul/>", {
-  "class": "my-new-list",
-  html: items.join( "" )
-  }).appendTo( "#ImageList" );
-
 }
 
 function getComments() {
