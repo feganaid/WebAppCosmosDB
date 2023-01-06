@@ -45,7 +45,14 @@ $(document).ready(function() {
     submitNewComment();
     
   });
- 
+  //Handler for get search results list
+  $(document).on('click', 'button.get-comments', function(){ 
+
+
+    //Execute the submit new asset function
+    getComments();
+    
+  });
 });
 
 //A function to submit a new asset to the REST endpoint 
