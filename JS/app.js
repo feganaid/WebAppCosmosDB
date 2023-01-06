@@ -219,7 +219,7 @@ function getImages(){
   items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
   items.push( "<hr />");
   items.push( "Comment/Rate" + "<br />");
-  items.push("<form style='font-size: 10pt;' id='newSearch'>");
+  items.push("<form style='font-size: 10pt;' id='newComment'>");
   items.push("<div class='mb-3'>");
   items.push("<label for='userName' class='form-label'>User Name</label>");
   items.push("<input type='text' class='form-control' id='userName'></br>");
