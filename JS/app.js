@@ -38,7 +38,7 @@ $(document).ready(function() {
   });
   
   //Handler for get search results list
-  $('.add-comment').submit(function(){
+  $(".add-comments").click(function(){
 
     //Execute the submit new asset function
     submitNewComment();
@@ -86,43 +86,12 @@ function submitNewComment(){
   
 //Create a form data object
 submitData = new FormData();
-/*
-var params = {
- "autocorrect": "True",
-};
- 
-$.ajax({
-            url: "https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Content-Type","text/plain");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","93f475c23fbd456b9c440def70aa1a6a");
-            },
-            type: 'POST',
-            // Request body
-            data: $('#comment').val(),
-            success: function(data) {
-                $.each( data, function( key, val ) {    
-                submitData.append('Comments', val["auto_corrected_text"]); 
-                });
-            },    
-        })
-        .done(function(data) {
-            alert("success");
-        })
-        .fail(function() {
-            alert("error");
-        });
-*/ 
+
 //Get form variables and append them to the form data object
 submitData.append('userName', $('input[name="userName"]').val());
 submitData.append('Comment', $('input[name="comment"]').val());
 submitData.append('Rating', $('input[name="rating"]').val());
 submitData.append('videoID', $('input[name="videoid"]').val());
-
-var vid = $('input[name="videoid"]').val();
- 
-ADDCOMMENT = ADDCOMMENT1 + vid + ADDCOMMENT2;
  
 //Post the form data to the endpoint, note the need to set the content type header
 $.ajax({
@@ -229,7 +198,7 @@ function getImages(){
   items.push("<label for='comment' class='form-label'>Comment</label>");
   items.push("<input type='text' class='form-control' name='comment'></br>");
   items.push("<input type='text' class='form-control' value='" + val["id"] + "' name='videoid'>");
-  items.push("<button type='submit' class='add-comments'>Submit</button>")
+  items.push("<button type='button' class='add-comments'>Submit</button>")
   items.push("</div>")
   items.push("</form>")
   
