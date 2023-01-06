@@ -226,9 +226,9 @@ function getComments() {
 
   vidID = new FormData();
   
-  vidID.append('vidID', $('input[name="videoid"]').val());
+  vidID.append('videoID', $('input[name="videoid"]').val());
    
-  GETCOMMENTS = GETCOMMENTS1 + val["vidID"] + GETCOMMENTS2; 
+  GETCOMMENTS = GETCOMMENTS1 + val["videoID"] + GETCOMMENTS2; 
    
   $.getJSON(GETCOMMENTS, function( data ) { 
   
@@ -239,12 +239,12 @@ function getComments() {
   });
   
   //Clear the assetlist div 
-    $('#getcomments' + val["vidID"]).empty() 
+    $('#getcomments' + val["videoID"]).empty() 
     //Append the contents of the items array to the ImageList Div
     $( "<ul/>", {
     "class": "my-new-list",
     html: comments.join( "" )
-    }).appendTo( '#getcomments' + val["vidID"] );
+    }).appendTo( '#getcomments' + val["videoID"] );
    });
 } 
    
