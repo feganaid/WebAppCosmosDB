@@ -170,13 +170,13 @@ function getSearch(){
 function getImages(){
 
   //Replace the current HTML in that div with a loading message
-  $('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
- 
-  //Create an array to hold all the retrieved assets
-  var items = []; 
+  $('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>'); 
  
   $.getJSON(RAI, function( data ) {
-    
+  
+  //Create an array to hold all the retrieved assets
+  var items = [];
+   
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
   $.each( data, function( key, val ) {
   items.push( "<hr />");
@@ -198,25 +198,13 @@ function getImages(){
   items.push("<label for='comment' class='form-label'>Comment</label>");
   items.push("<input type='text' class='form-control' name='comment'></br>");
   items.push("<input type='text' class='form-control' value='" + val["id"] + "' name='videoid'>");
-  items.push("<button type='button' class='add-comments'>Submit</button>")
-  items.push("</div>")
-  items.push("</form>")
-  
-  var videoID = val["id"]; 
-  
-  GETCOMMENTS = GETCOMMENTS1 + videoID + GETCOMMENTS2;
-   
-  $.getJSON(GETCOMMENTS, function( data ) { 
-  
-  $.each( data, function( key, val ) { 
-  items.push( "UserName : " + val["userName"] + ", Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
+  items.push("<button type='button' class='add-comments'>Submit</button>");
+  items.push("<button type='button' class='get-comments'>View Comments</button>");
+  items.push("</div>");
+  items.push("</form>");
+  items.push("<div id='getcomments" + val["id"] + "'></div>") 
   });
   
-  });
-   
-  });
- 
-  });
     //Clear the assetlist div 
     $('#ImageList').empty();
     //Append the contents of the items array to the ImageList Div
@@ -224,11 +212,36 @@ function getImages(){
     "class": "my-new-list",
     html: items.join( "" )
     }).appendTo( "#ImageList" );
+   });
 }
 
 function getComments() {
 
-  var comments = [];
+  var videoID = val["id"];
+   
+  GETCOMMENTS = GETCOMMENTS1 + videoID + GETCOMMENTS2; 
+   
+  $.getJSON(GETCOMMENTS, function( data ) { 
+  
+  var comments = [];  
+   
+  $.each( data, function( key, val ) { 
+  comments.push( "UserName : " + val["userName"] + ", Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
+  });
+  
+  //Clear the assetlist div 
+    $('#getcomments' + val["id"]).empty() 
+    //Append the contents of the items array to the ImageList Div
+    $( "<ul/>", {
+    "class": "my-new-list",
+    html: comments.join( "" )
+    }).appendTo( '#getcomments' + val["id"] );
+   });
+} 
+   
+
+ /*  
+   var comments = [];
   
   $('#CommentList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
 
@@ -263,7 +276,7 @@ function getComments() {
   });
 }
  
-/*function addcomments() {
+function addcomments() {
     $.each( data, function( key, val ) { 
     items.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
     }) 
