@@ -38,7 +38,7 @@ $(document).ready(function() {
   });
   
   //Handler for get search results list
-  $('.add-comment').click('submit', function(){
+  $('.add-comment').on('click', '.add-comments', function(){
 
     //Execute the submit new asset function
     submitNewComment();
