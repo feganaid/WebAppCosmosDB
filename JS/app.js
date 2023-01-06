@@ -119,9 +119,9 @@ submitData.append('Comment', $('input[name="comment"]').val());
 submitData.append('Rating', $('input[name="rating"]').val());
 submitData.append('videoID', $('input[name="videoid"]').val());
 
-var videoID = $('input[name="videoid"]').val();
+var vid = $('input[name="videoid"]').val();
  
-ADDCOMMENT = ADDCOMMENT1 + videoID + ADDCOMMENT2;
+ADDCOMMENT = ADDCOMMENT1 + vid + ADDCOMMENT2;
  
 //Post the form data to the endpoint, note the need to set the content type header
 $.ajax({
