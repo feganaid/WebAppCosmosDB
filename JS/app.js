@@ -196,7 +196,7 @@ function getImages(){
   items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
   items.push( "<hr />");
   items.push( "Comment/Rate" + "<br />");
-  items.push("<form style='font-size: 10pt;' class = 'add-comment'>");
+  items.push("<form style='font-size: 10pt;' id = 'comment" + val["id"] +"' class = 'add-comment'>");
   items.push("<div class='mb-3'>");
   items.push("<label for='userName' class='form-label'>User Name</label>");
   items.push("<input type='text' class='form-control' name='userName'></br>");
@@ -206,10 +206,10 @@ function getImages(){
   items.push("<input type='text' class='form-control' name='comment'></br>");
   items.push("<input type='text' class='form-control' value='" + val["id"] + "' name='videoid'>");
   items.push("<button type='button' class='add-comments'>Submit</button>");
-  items.push("<button type='button' class='get-comments'>View Comments</button>");
+  items.push("<button type='button' id='" +val["id"] +"' class='get-comments'>View Comments</button>");
   items.push("</div>");
   items.push("</form>");
-  items.push("<div id='getcomments" + val["id"] + "'></div>") 
+  items.push("<div id='" + val["id"] + "'></div>") 
   });
   
     //Clear the assetlist div 
@@ -224,7 +224,9 @@ function getImages(){
 
 function getComments() {
    
-  GETCOMMENTS = GETCOMMENTS1 + $('input[name="videoid"]').val() + GETCOMMENTS2; 
+  var VID = $('input[name="videoid"]').val() 
+ 
+  GETCOMMENTS = GETCOMMENTS1 + VID + GETCOMMENTS2; 
    
   $.getJSON(GETCOMMENTS, function( data ) { 
   
@@ -235,12 +237,12 @@ function getComments() {
   });
   
   //Clear the assetlist div 
-    $('#getcomments' + $('input[name="videoid"]').val()).empty() 
+    $(VID).empty() 
     //Append the contents of the items array to the ImageList Div
     $( "<ul/>", {
     "class": "my-new-list",
     html: comments.join( "" )
-    }).appendTo( '#getcomments' + $('input[name="videoid"]').val() );
+    }).appendTo( VID );
    });
 } 
    
