@@ -37,7 +37,7 @@ $(document).ready(function() {
   });
   
   //Handler for get search results list
-  $('.add-comment').click(function(){
+  $('.add-comments').click(function(){
 
     //Execute the submit new asset function
     submitNewComment();
@@ -228,7 +228,7 @@ function getImages(){
   items.push("<label for='comment' class='form-label'>Comment</label>");
   items.push("<input type='text' class='form-control' name='comment'></br>");
   items.push("<input type='text' class='form-control' value='" + val["id"] + "' name='videoid'>");
-  items.push("<button type='submit' class='btn btn-primary'>Submit</button>")
+  items.push("<button type='button' class='add-comments'>Submit</button>")
   items.push("</div>")
   items.push("</form>")
   
