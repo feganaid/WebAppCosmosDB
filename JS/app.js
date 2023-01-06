@@ -2,7 +2,8 @@
 IUPS = "https://prod-33.northeurope.logic.azure.com:443/workflows/3f681a82021e4f67804a62a54c16f765/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=L-M5SgrbkIEuxREnHctua9MxznXUHGRW1TXwiHInrj8";
 RAI = "https://prod-44.northeurope.logic.azure.com:443/workflows/2fa2c176aaee460d9900c4b5fbeeb5c7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VmmFbvXRl0m-E6rCOSh1IEBLcR7BPAYdUTJfiqty1f0";
 SEARCH = "https://prod-07.centralus.logic.azure.com:443/workflows/e00cf2c4a2d94c86bd9d38590ae0b4db/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k4f0U3ZJuZv58ObWc9FQtguYfUKeeodjzjLkpzkKDyM";
-ADDCOMMENT = "https://prod-02.centralus.logic.azure.com:443/workflows/eced7439947a464fb8b3568eb5718636/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=TnRNifbEBFG-ttZoCGGFaG7nl4CRv20IR85rVTBKKZE";
+ADDCOMMENT1 = "https://prod-02.centralus.logic.azure.com/workflows/eced7439947a464fb8b3568eb5718636/triggers/manual/paths/invoke/rest/v1/comments/";
+ADDCOMMENT2 = "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=TnRNifbEBFG-ttZoCGGFaG7nl4CRv20IR85rVTBKKZE";
 GETCOMMENTS1 = "https://prod-04.centralus.logic.azure.com/workflows/75e49a5c613e423eb9246f9fc54dae23/triggers/manual/paths/invoke/rest/v1/comments/";
 GETCOMMENTS2 = "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=wkYKJE4ITc4I7F56hYMlnRWBGtdsjPq78Pyh6togv2s";
 BLOB_ACCOUNT = "https://blobstoragecom682af.blob.core.windows.net";
@@ -117,9 +118,11 @@ submitData.append('Title', $('#title').val());
 submitData.append('Comment', $('#comment').val());
 submitData.append('Rating', parseInt($('#rating').val()));
 
+var videoID = $('#id').val();
+ 
 //Post the form data to the endpoint, note the need to set the content type header
 $.ajax({
-  url: ADDCOMMENT,
+  url: ADDCOMMENT + "videoID" + ADDCOMMENT2,
   data: submitData,
   cache: false,
   enctype: 'multipart/form-data',
@@ -225,7 +228,9 @@ function getImages(){
   items.push("</div>")
   items.push("</form>")
   
-  $.getJSON(GETCOMMENTS1 + "val["id"]" + GETCOMMENTS2, function( data ) { 
+  var videoID = $('#id').val(); 
+   
+  $.getJSON(GETCOMMENTS1 + "videoID" + GETCOMMENTS2, function( data ) { 
   
   $.each( data, function( key, val ) { 
   items.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
