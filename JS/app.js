@@ -215,14 +215,15 @@ function getImages(){
   });
    
   });
-  //Clear the assetlist div 
+ 
+  });
+    //Clear the assetlist div 
     //$('#ImageList').empty();
     //Append the contents of the items array to the ImageList Div
     $( "<ul/>", {
     "class": "my-new-list",
     html: items.join( "" )
-    }).appendTo( "#ImageList" ); 
-  });
+    }).appendTo( "#ImageList" );
 }
 
 function getComments() {
