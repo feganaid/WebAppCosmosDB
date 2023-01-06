@@ -117,9 +117,9 @@ $.ajax({
 submitData.append('userName', $('#userName').val());
 submitData.append('Comment', $('#comment').val());
 submitData.append('Rating', $('#rating').val());
-submitData.append('videoID', $('#id').val());
+submitData.append('videoID', val["id"]);
 
-var videoID = $('#id').val();
+var videoID = val["id"];
  
 //Post the form data to the endpoint, note the need to set the content type header
 $.ajax({
@@ -229,12 +229,14 @@ function getImages(){
   items.push("</div>")
   items.push("</form>")
   
-  var videoID = $('#id').val(); 
+  var videoID = val["id"]; 
+  
+  GETCOMMENTS = GETCOMMENTS1 + videoID + GETCOMMENTS2
    
-  $.getJSON(GETCOMMENTS1 + videoID + GETCOMMENTS2, function( data ) { 
+  $.getJSON(GETCOMMENTS, function( data ) { 
   
   $.each( data, function( key, val ) { 
-  items.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
+  items.push( "UserName : " + val["userName"] + ", Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
   });
   });
    
