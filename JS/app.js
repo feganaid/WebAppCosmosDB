@@ -117,9 +117,9 @@ $.ajax({
 submitData.append('userName', $('#userName').val());
 submitData.append('Comment', $('#comment').val());
 submitData.append('Rating', $('#rating').val());
-submitData.append('videoID', val["videoid"]);
+submitData.append('videoID', $('#videoid').val());
 
-var videoID = val["videoid"];
+var videoID = $('#videoid').val();
  
 ADDCOMMENT = ADDCOMMENT1 + videoID + ADDCOMMENT2;
  
@@ -227,7 +227,8 @@ function getImages(){
   items.push("<input type='number' class='form-control' min='1' max='5' id='rating'></br>");
   items.push("<label for='comment' class='form-label'>Comment</label>");
   items.push("<input type='text' class='form-control' id='comment'></br>");
-  items.push("<button  id = 'addComment' type='button' videoid = " + val["id"] + " class='btn btn-primary'>Submit</button>")
+  items.push("<input type='hidden' value=" + val["id"] + " id='videoid'>");
+  items.push("<button  id = 'addComment' type='button' class='btn btn-primary'>Submit</button>")
   items.push("</div>")
   items.push("</form>")
   
