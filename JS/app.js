@@ -121,9 +121,11 @@ submitData.append('videoID', val["id"]);
 
 var videoID = val["id"];
  
+ADDCOMMENT = ADDCOMMENT1 + videoID + ADDCOMMENT2;
+ 
 //Post the form data to the endpoint, note the need to set the content type header
 $.ajax({
-  url: ADDCOMMENT1 + videoID + ADDCOMMENT2,
+  url: ADDCOMMENT,
   data: submitData,
   cache: false,
   enctype: 'multipart/form-data',
