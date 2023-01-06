@@ -116,7 +116,8 @@ $.ajax({
 //Get form variables and append them to the form data object
 submitData.append('userName', $('#userName').val());
 submitData.append('Comment', $('#comment').val());
-submitData.append('Rating', parseInt($('#rating').val()));
+submitData.append('Rating', $('#rating').val());
+submitData.append('videoID', $('#id').val());
 
 var videoID = $('#id').val();
  
