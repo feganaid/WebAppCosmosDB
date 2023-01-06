@@ -114,12 +114,12 @@ $.ajax({
         });
 */ 
 //Get form variables and append them to the form data object
-submitData.append('userName', $('#userName').val());
-submitData.append('Comment', $('#comment').val());
-submitData.append('Rating', $('#rating').val());
-submitData.append('videoID', $('#videoid').val());
+submitData.append('userName', $('input[name="userName"]').val());
+submitData.append('Comment', $('input[name="comment"]').val());
+submitData.append('Rating', $('input[name="rating"]').val());
+submitData.append('videoID', $('input[name="videoid"]).val());
 
-var videoID = $('#videoid').val();
+var videoID = $('input[name="videoid"]).val();
  
 ADDCOMMENT = ADDCOMMENT1 + videoID + ADDCOMMENT2;
  
@@ -222,12 +222,12 @@ function getImages(){
   items.push("<form style='font-size: 10pt;'>");
   items.push("<div class='mb-3'>");
   items.push("<label for='userName' class='form-label'>User Name</label>");
-  items.push("<input type='text' class='form-control' id='userName'></br>");
+  items.push("<input type='text' class='form-control' name='userName'></br>");
   items.push("<label for='rating' class='form-label'>Rating</label>");
-  items.push("<input type='number' class='form-control' min='1' max='5' id='rating'></br>");
+  items.push("<input type='number' class='form-control' min='1' max='5' name='rating'></br>");
   items.push("<label for='comment' class='form-label'>Comment</label>");
-  items.push("<input type='text' class='form-control' id='comment'></br>");
-  items.push("<input type='hidden' value='" + val["id"] + "' id='videoid'>");
+  items.push("<input type='text' class='form-control' name='comment'></br>");
+  items.push("<input type='hidden' value='" + val["id"] + "' name='videoid'>");
   items.push("<button type='button' class='addComment'>Submit</button>")
   items.push("</div>")
   items.push("</form>")
