@@ -4,6 +4,7 @@ RAI = "https://prod-44.northeurope.logic.azure.com:443/workflows/2fa2c176aaee460
 SEARCH = "https://prod-07.centralus.logic.azure.com:443/workflows/e00cf2c4a2d94c86bd9d38590ae0b4db/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k4f0U3ZJuZv58ObWc9FQtguYfUKeeodjzjLkpzkKDyM";
 ADDCOMMENT1 = "https://prod-02.centralus.logic.azure.com/workflows/eced7439947a464fb8b3568eb5718636/triggers/manual/paths/invoke/rest/v1/comments/";
 ADDCOMMENT2 = "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=TnRNifbEBFG-ttZoCGGFaG7nl4CRv20IR85rVTBKKZE";
+ADDCOMMENT3 = "https://prod-02.centralus.logic.azure.com/workflows/eced7439947a464fb8b3568eb5718636/triggers/manual/paths/invoke/rest/v1/comments/?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=TnRNifbEBFG-ttZoCGGFaG7nl4CRv20IR85rVTBKKZE";
 GETCOMMENTS1 = "https://prod-04.centralus.logic.azure.com/workflows/75e49a5c613e423eb9246f9fc54dae23/triggers/manual/paths/invoke/rest/v1/comments/";
 GETCOMMENTS2 = "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=wkYKJE4ITc4I7F56hYMlnRWBGtdsjPq78Pyh6togv2s";
 BLOB_ACCOUNT = "https://blobstoragecom682af.blob.core.windows.net";
@@ -125,7 +126,7 @@ ADDCOMMENT = ADDCOMMENT1 + vid + ADDCOMMENT2;
  
 //Post the form data to the endpoint, note the need to set the content type header
 $.ajax({
-  url: ADDCOMMENT,
+  url: ADDCOMMENT3,
   data: submitData,
   cache: false,
   enctype: 'multipart/form-data',
