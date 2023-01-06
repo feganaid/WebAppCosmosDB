@@ -38,11 +38,10 @@ $(document).ready(function() {
   });
   
   //Handler for get search results list
-  $(".add-comments").click(function(){
+  $('button[class="add-comments"]').click(function(){
 
     //Execute the submit new asset function
     submitNewComment();
-    //modComments();
     
   });
  
