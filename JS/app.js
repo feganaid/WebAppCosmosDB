@@ -114,7 +114,7 @@ $.ajax({
         });
 */ 
 //Get form variables and append them to the form data object
-submitData.append('Title', $('#title').val());
+submitData.append('userName', $('#userName').val());
 submitData.append('Comment', $('#comment').val());
 submitData.append('Rating', parseInt($('#rating').val()));
 
