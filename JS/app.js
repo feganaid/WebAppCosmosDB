@@ -224,7 +224,7 @@ function getImages(){
 
 function getComments() {
 
-  var videoID = val["id"];
+  var videoID = $(input[name="videoid"]).val();
    
   GETCOMMENTS = GETCOMMENTS1 + videoID + GETCOMMENTS2; 
    
@@ -237,12 +237,12 @@ function getComments() {
   });
   
   //Clear the assetlist div 
-    $('#getcomments' + val["id"]).empty() 
+    $('#getcomments' + videoID).empty() 
     //Append the contents of the items array to the ImageList Div
     $( "<ul/>", {
     "class": "my-new-list",
     html: comments.join( "" )
-    }).appendTo( '#getcomments' + val["id"] );
+    }).appendTo( '#getcomments' + videoID );
    });
 } 
    
