@@ -227,7 +227,9 @@ function getComments() {
   var VID = $('input[name="videoid"]').val() 
  
   GETCOMMENTS = GETCOMMENTS1 + VID + GETCOMMENTS2; 
-   
+  
+  $('#' + VID).html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
+ 
   $.getJSON(GETCOMMENTS, function( data ) { 
   
   var comments = [];  
@@ -237,12 +239,12 @@ function getComments() {
   });
   
   //Clear the assetlist div 
-    $(VID).empty() 
+    $('#' + VID).empty() 
     //Append the contents of the items array to the ImageList Div
     $( "<ul/>", {
     "class": "my-new-list",
     html: comments.join( "" )
-    }).appendTo( VID );
+    }).appendTo( '#' + VID );
    });
 } 
    
