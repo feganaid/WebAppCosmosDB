@@ -122,7 +122,7 @@ var videoID = $('#id').val();
  
 //Post the form data to the endpoint, note the need to set the content type header
 $.ajax({
-  url: ADDCOMMENT + "videoID" + ADDCOMMENT2,
+  url: ADDCOMMENT1 + videoID + ADDCOMMENT2,
   data: submitData,
   cache: false,
   enctype: 'multipart/form-data',
@@ -230,7 +230,7 @@ function getImages(){
   
   var videoID = $('#id').val(); 
    
-  $.getJSON(GETCOMMENTS1 + "videoID" + GETCOMMENTS2, function( data ) { 
+  $.getJSON(GETCOMMENTS1 + videoID + GETCOMMENTS2, function( data ) { 
   
   $.each( data, function( key, val ) { 
   items.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
