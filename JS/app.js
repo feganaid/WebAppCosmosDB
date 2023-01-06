@@ -117,9 +117,9 @@ $.ajax({
 submitData.append('userName', $('input[name="userName"]').val());
 submitData.append('Comment', $('input[name="comment"]').val());
 submitData.append('Rating', $('input[name="rating"]').val());
-submitData.append('videoID', $('input[name="videoid"]).val());
+submitData.append('videoID', $('input[name="videoid"]').val());
 
-var videoID = $('input[name="videoid"]).val();
+var videoID = $('input[name="videoid"]').val();
  
 ADDCOMMENT = ADDCOMMENT1 + videoID + ADDCOMMENT2;
  
