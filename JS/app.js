@@ -224,7 +224,7 @@ function getImages(){
 
 function getComments() {
 
-  var videoID = $(input[name="videoid"]).val();
+  var videoID = $('input[name="videoid"]').val();
    
   GETCOMMENTS = GETCOMMENTS1 + videoID + GETCOMMENTS2; 
    
