@@ -170,8 +170,7 @@ function getSearch(){
 function getImages(){
 
   //Replace the current HTML in that div with a loading message
-  $('#ImageList').empty()
-  //html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
+  $('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
  
   $.getJSON(RAI, function( data ) {
   
@@ -205,7 +204,7 @@ function getImages(){
   
   var videoID = val["id"]; 
   
-  GETCOMMENTS = GETCOMMENTS1 + videoID + GETCOMMENTS2
+  GETCOMMENTS = GETCOMMENTS1 + videoID + GETCOMMENTS2;
    
   $.getJSON(GETCOMMENTS, function( data ) { 
   
@@ -213,18 +212,16 @@ function getImages(){
   items.push( "UserName : " + val["userName"] + ", Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
   });
   
-  //Append the contents of the items array to the ImageList Div
-    $( "<ul/>", {
-    "class": "my-new-list",
-    html: items.join( "" )
-    }).appendTo( "#ImageList" );
-  
   });
    
   });
   //Clear the assetlist div 
     //$('#ImageList').empty();
-     
+    //Append the contents of the items array to the ImageList Div
+    $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+    }).appendTo( "#ImageList" ); 
   });
 }
 
