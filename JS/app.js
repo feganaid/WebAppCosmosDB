@@ -235,7 +235,7 @@ function getImages(){
   $.each( data, function( key, val ) { 
   items.push( "Rating : " + val["Rating"] + " out of 5 , Comment : " + val["Comment"] + "<br />"); 
   });
-  }
+  });
    
    /*Create a form data object
   searchData = new FormData();
