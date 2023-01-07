@@ -206,7 +206,7 @@ function getImages(){
   items.push("<input type='text' class='form-control' name='comment'></br>");
   items.push("<input type='hidden' class='form-control' value='" + val["id"] + "' name='videoid'>");
   items.push("<button type='button' class='add-comments'>Submit</button>");
-  items.push("<button type='button' id='" +val["id"] +"' class='get-comments'>View Comments</button>");
+  items.push("<button type='button' id='" +val["id"] +"' class='get-comments'>View Comments</button></br>");
   items.push("</div>");
   items.push("</form>");
   items.push("<div id='" + val["id"] + "'></div>") 
