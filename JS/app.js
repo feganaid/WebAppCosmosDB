@@ -209,7 +209,9 @@ function getImages(){
   items.push("<button type='button' id='" +val["id"] +"' class='get-comments'>View Comments</button></br>");
   items.push("</div>");
   items.push("</form>");
+  items.push("</div>");
   items.push("<div id='" + val["id"] + "'></div>") 
+  items.push("</div>");
   });
   
     //Clear the assetlist div 
