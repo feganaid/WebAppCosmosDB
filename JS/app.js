@@ -204,7 +204,7 @@ function getImages(){
   items.push("<input type='number' class='form-control' min='1' max='5' name='rating'></br>");
   items.push("<label for='comment' class='form-label'>Comment</label>");
   items.push("<input type='text' class='form-control' name='comment'></br>");
-  items.push("<input type='text' class='form-control' value='" + val["id"] + "' name='videoid'>");
+  items.push("<input type='hidden' class='form-control' value='" + val["id"] + "' name='videoid'>");
   items.push("<button type='button' class='add-comments'>Submit</button>");
   items.push("<button type='button' id='" +val["id"] +"' class='get-comments'>View Comments</button>");
   items.push("</div>");
