@@ -189,7 +189,7 @@ function getImages(){
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
   $.each( data, function( key, val ) {
   items.push( "<hr />");
-  items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='1920' height='1080' controls> </video> <br />");
+  items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='640' height='360' controls> </video> <br />");
   items.push( "Title : " + val["Title"] + "<br />");
   items.push( "Publisher : " + val["Publisher"] + "<br />");
   items.push( "Producer : " + val["Producer"] + "<br />");
@@ -243,7 +243,7 @@ function getSearch(){
   //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
   $.each( data, function( key, val ) {
   items.push( "<hr />");
-  items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='1920' height='1080' controls> </video> <br />");
+  items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='640' height='360' controls> </video> <br />");
   items.push( "Title : " + val["Title"] + "<br />");
   items.push( "Publisher : " + val["Publisher"] + "<br />");
   items.push( "Producer : " + val["Producer"] + "<br />");
