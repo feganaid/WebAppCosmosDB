@@ -2,6 +2,8 @@
 IUPS = "https://prod-33.northeurope.logic.azure.com:443/workflows/3f681a82021e4f67804a62a54c16f765/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=L-M5SgrbkIEuxREnHctua9MxznXUHGRW1TXwiHInrj8";
 RAI = "https://prod-44.northeurope.logic.azure.com:443/workflows/2fa2c176aaee460d9900c4b5fbeeb5c7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VmmFbvXRl0m-E6rCOSh1IEBLcR7BPAYdUTJfiqty1f0";
 SEARCH = "https://prod-07.centralus.logic.azure.com:443/workflows/e00cf2c4a2d94c86bd9d38590ae0b4db/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k4f0U3ZJuZv58ObWc9FQtguYfUKeeodjzjLkpzkKDyM";
+SEARCH1 = "https://prod-07.centralus.logic.azure.com/workflows/e00cf2c4a2d94c86bd9d38590ae0b4db/triggers/manual/paths/invoke/rest/v1/videos/";
+SEARCH2 = "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k4f0U3ZJuZv58ObWc9FQtguYfUKeeodjzjLkpzkKDyM";
 ADDCOMMENT1 = "https://prod-02.centralus.logic.azure.com/workflows/eced7439947a464fb8b3568eb5718636/triggers/manual/paths/invoke/rest/v1/comments/";
 ADDCOMMENT2 = "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=TnRNifbEBFG-ttZoCGGFaG7nl4CRv20IR85rVTBKKZE";
 ADDCOMMENT3 = "https://prod-02.centralus.logic.azure.com/workflows/eced7439947a464fb8b3568eb5718636/triggers/manual/paths/invoke/rest/v1/comments/?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=TnRNifbEBFG-ttZoCGGFaG7nl4CRv20IR85rVTBKKZE";
@@ -33,7 +35,7 @@ $(document).ready(function() {
 
     //Execute the submit new asset function
     getSearch();
-    getComments();
+    //getComments();
     
   });
   
@@ -116,7 +118,7 @@ $.ajax({
 
 }
 
-//A function to get a list of all the assets and write them to the Div with the AssetList Div
+/*A function to get a list of all the assets and write them to the Div with the AssetList Div
 function getSearch(){
 
   //Create a form data object
@@ -166,7 +168,7 @@ function getSearch(){
   }
   });
 } 
- 
+*/ 
 
 /*
   $.getJSON(RAI, function( data ) {
@@ -223,6 +225,58 @@ function getImages(){
     }).appendTo( "#ImageList" );
    });
 }
+
+
+//A function to get a list of all the assets and write them to the Div with the AssetList Div
+function getSearch(){
+
+  //Replace the current HTML in that div with a loading message
+  $('#SearchResults').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>'); 
+ 
+  var search = $('#search').val()
+ 
+  $.getJSON(SEARCH1 + search + SEARCH2, function( data ) {
+  
+  //Create an array to hold all the retrieved assets
+  var items = [];
+   
+  //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
+  $.each( data, function( key, val ) {
+  items.push( "<hr />");
+  items.push("<video src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4' width='400' height='500' controls> </video> <br />");
+  items.push( "Title : " + val["Title"] + "<br />");
+  items.push( "Publisher : " + val["Publisher"] + "<br />");
+  items.push( "Producer : " + val["Producer"] + "<br />");
+  items.push( "Genre : " + val["Genre"] + "<br />");
+  items.push( "Age : " + val["Age"] + "<br />");
+  items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
+  items.push( "<hr />");
+  items.push( "Comment/Rate" + "<br />");
+  items.push("<form style='font-size: 10pt;' id = 'comment" + val["id"] +"' class = 'add-comment'>");
+  items.push("<div class='mb-3'>");
+  items.push("<label for='userName' class='form-label'>User Name</label>");
+  items.push("<input type='text' class='form-control' name='userName'></br>");
+  items.push("<label for='rating' class='form-label'>Rating</label>");
+  items.push("<input type='number' class='form-control' min='1' max='5' name='rating'></br>");
+  items.push("<label for='comment' class='form-label'>Comment</label>");
+  items.push("<input type='text' class='form-control' name='comment'></br>");
+  items.push("<input type='hidden' class='form-control' value='" + val["id"] + "' name='videoid'>");
+  items.push("<button type='button' class='add-comments'>Submit</button>");
+  items.push("<button type='button' id='" +val["id"] +"' class='get-comments'>View Comments</button></br>");
+  items.push("</div>");
+  items.push("</form>");
+  });
+  
+    //Clear the assetlist div 
+    $('#SearchResults').empty();
+    //Append the contents of the items array to the ImageList Div
+    $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+    }).appendTo( "#SearchResults" );
+   });
+}
+
 
 function getComments() {
    
