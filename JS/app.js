@@ -132,7 +132,7 @@ function getImages(){
   items.push( "Producer : " + val["Producer"] + "<br />");
   items.push( "Genre : " + val["Genre"] + "<br />");
   items.push( "Age : " + val["Age"] + "<br />");
-  items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
+  items.push( "Uploaded by: " + val["userName"] + "<br />");
   items.push( "<hr />");
   items.push( "Comment/Rate" + "<br />");
   items.push("<form style='font-size: 10pt;' id = 'comment" + val["id"] +"' class = 'add-comment'>");
@@ -186,7 +186,7 @@ function getSearch(){
   items.push( "Producer : " + val["Producer"] + "<br />");
   items.push( "Genre : " + val["Genre"] + "<br />");
   items.push( "Age : " + val["Age"] + "<br />");
-  items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
+  items.push( "Uploaded by: " + val["userName"] + "<br />");
   items.push( "<hr />");
   items.push( "Comment/Rate" + "<br />");
   items.push("<form style='font-size: 10pt;' id = 'comment" + val["id"] +"' class = 'add-comment'>");
